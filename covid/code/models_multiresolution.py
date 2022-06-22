@@ -307,9 +307,9 @@ class ATMGNN(nn.Module):
         self.mix_1 = nn.Linear((len(self.num_clusters) + 1) * nhid, 512)
         self.mix_2 = nn.Linear(512, (len(self.num_clusters) + 1) * nhid)
 
-        # +------------------------+
-        # | Long Short-Term Memory |
-        # +------------------------+
+        # +--------------------------+
+        # | Attention/Self-Attention |
+        # +--------------------------+
 
         self.self_attention = nn.MultiheadAttention((len(self.num_clusters) + 1) * nhid, self.nhead, dropout=dropout)
         self.linear_reduction = nn.Linear(self.window, 1)
