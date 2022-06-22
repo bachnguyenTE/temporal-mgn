@@ -1,20 +1,34 @@
-# [Transfer Graph Neural Networks for Pandemic Forecasting](https://arxiv.org/abs/2009.08388)
+# [Temporal Multiresolution Graph Neural Networks For Epidemic Prediction](https://arxiv.org/abs/2205.14831)
 
 
 ## Data
 
+### COVID-19 Dataset
 
-### Labels
+#### Source
 
-We gather the ground truth for number of confiremed cases per region through open data for [Italy](https://github.com/pcm-dpc/COVID-19/blob/master/dati-province/dpc-covid19-ita-province.csv),
+We borrow the COVID-19 dataset from the original [Transfer Graph Neural Networks for Pandemic Forecasting](https://arxiv.org/abs/2009.08388) paper. If you find the datasets useful in your research, please consider adding the following citation from the source paper:
+
+```bibtex
+@inproceedings{panagopoulos2020transfer,
+  title={{Transfer Graph Neural Networks for Pandemic Forecasting}},
+  author={Panagopoulos, George and Nikolentzos, Giannis and Vazirgiannis, Michalis},
+  booktitle={Proceedings of the 35th AAAI Conference on Artificial Intelligence},
+  year={2021},
+}
+```
+
+#### Labels
+
+Gathered is the ground truth for number of confirmed cases per region through open data for [Italy](https://github.com/pcm-dpc/COVID-19/blob/master/dati-province/dpc-covid19-ita-province.csv),
 [England](https://coronavirus.data.gov.uk), [France](https://www.data.gouv.fr/en/datasets/donnees-relatives-aux-tests-de-depistage-de-covid-19-realises-en-laboratoire-de-ville/) and [Spain](https://code.montera34.com:4443/numeroteca/covid19/-/blob/master/data/output/spain/covid19-provincias-spain_consolidated.csv}}).
-We have preprocessed the data and the final versions are in each country's subfolder in the data folder.
+The data have been preprocessed and the final versions are in each country's subfolder in the data folder.
 
 
-### Graphs
+#### Graphs
 
-The graphs are formed using the movement data from facebook Data For Good disease prevention [maps](https://dataforgood.fb.com/docs/covid19/). More specifically, we used the total number of people moving daily from one region to another, using the [Movement between Administrative Regions](https://dataforgood.fb.com/tools/movement-range-maps/) datasets. We can not share the initial data due to the data license agreement, but after contacting the FB Data for Good team, we reached the consensus that we can share an aggregated and diminished version which was used for our experiments. 
-These can be found inside the "graphs" folder of each country.These include the mobility maps between administrative regions that we use in our experiments until 12/5/2020, starting from 13/3 for England, 12/3 for Spain, 10/3 for France and 24/2 for Italy.
+The graphs are formed using the movement data from Meta's Data for Good Disease Prevention [maps](https://dataforgood.fb.com/docs/covid19/). More specifically, the data used is the total number of people moving daily from one region to another, using the [Movement between Administrative Regions](https://dataforgood.fb.com/tools/movement-range-maps/) datasets. The authors of the original paper can share an aggregated and diminished version which was used for their and our experiments. 
+These can be found inside the "graphs" folder of each country. These include the mobility maps between administrative regions that we use in our experiments until 12/5/2020, starting from 13/3 for England, 12/3 for Spain, 10/3 for France and 24/2 for Italy.
 The mapplots require the gadm1_nuts3_counties_sf_format.Rds file which can be found at the Social Connectedness Index [data](https://dataforgood.fb.com/tools/social-connectedness-index/).
 
 
@@ -44,18 +58,6 @@ python metalearn.py
 
 Use the script "gather_for_map.py" to aggregate data in the output folder to produce the map plots and the "tl_base.py" for the TL_BASE baseline. Use the "error_case_maps.R" to plot the maps of England (adjust  it for the other countries). 
 
-## Citation
-
-If you find the methods or the datasets useful in your research, please consider adding the following citation:
-
-```bibtex
-@inproceedings{panagopoulos2020transfer,
-  title={{Transfer Graph Neural Networks for Pandemic Forecasting}},
-  author={Panagopoulos, George and Nikolentzos, Giannis and Vazirgiannis, Michalis},
-  booktitle={Proceedings of the 35th AAAI Conference on Artificial Intelligence},
-  year={2021},
-}
-```
 **License**
 
 - [MIT License](https://github.com/geopanag/pandemic_tgnn/blob/master/LICENSE)
