@@ -32,32 +32,52 @@ These can be found inside the "graphs" folder of each country. These include the
 The mapplots require the gadm1_nuts3_counties_sf_format.Rds file which can be found at the Social Connectedness Index [data](https://dataforgood.fb.com/tools/social-connectedness-index/).
 
 
+### Hungary Chickenpox Dataset
 
-## Code
+A dataset of county level chickenpox cases in Hungary between 2004 and 2014. The dataset was made public during the development of [PyTorch Geometric Temporal](https://github.com/benedekrozemberczki/pytorch_geometric_temporal). The underlying graph is static - vertices are counties and edges are neighbourhoods. Vertex features are lagged weekly counts of the chickenpox cases (4 lags included). The target is the weekly number of cases for the upcoming week (signed integers). The dataset consist of more than 500 snapshots (weeks).
+
+
+## Code Execution
 
 ### Requirements
-To run this code you will need the following python and R packages:
-[numpy](https://www.numpy.org/), [pandas](https://pandas.pydata.org/), [scipy](https://www.scipy.org/) ,[pytorch 1.5.1](https://pytorch.org/), [pytorch-geometric 1.5.0](https://github.com/rusty1s/pytorch_geometric), [networkx 1.11](https://networkx.github.io/), [sklearn](https://scikit-learn.org/stable/), dplyr, sf, ggplot2, sp.
-
-#### Requirements for MAC
-For MAC users, please use these versions: torch 1.7.0, torch-cluster 1.5.9 , torch-geometric 2.0.1 , torch-scatter 2.0.7, torch-sparse 0.6.12, torch-spline-conv 1.2.1., pystan 2.18.0.0 (for FB prophet).
-
+To run this code you will need the following `python` and `R` packages:
+- [numpy](https://www.numpy.org/)
+- [pandas](https://pandas.pydata.org/)
+- [scipy](https://www.scipy.org/)
+- [PyTorch](https://pytorch.org/)
+- [networkx](https://networkx.github.io/)
+- [sklearn](https://scikit-learn.org/stable/)
+- dplyr, sf, ggplot2, sp
+- [PyTorch Geometric (pyg/torch-geometric)](https://github.com/rusty1s/pytorch_geometric)
+- [PyTorch Geometric Temporal (torch-geometric-temporal)](https://github.com/benedekrozemberczki/pytorch_geometric_temporal)
 
 ### Run
+
+#### COVID datasets TMGNN
+
 To run the experiments with the default settings:
-
 ```bash
-
-cd code
-
-python experiments.py
- 
-python metalearn.py
- 
+cd covid/code
+python experiments_multiresolution.py
 ```
 
-Use the script "gather_for_map.py" to aggregate data in the output folder to produce the map plots and the "tl_base.py" for the TL_BASE baseline. Use the "error_case_maps.R" to plot the maps of England (adjust  it for the other countries). 
+To run the baseline models: 
+```bash
+cd covid/code
+python experiments.py
+```
 
-**License**
+Use the script `gather_for_map.py` to aggregate data in the output folder to produce the map plots and the `tl_base.py` for the `TL_BASE` baseline. Use the `error_case_maps.R` to plot the maps of England (adjust it for the other countries). 
 
-- [MIT License](https://github.com/geopanag/pandemic_tgnn/blob/master/LICENSE)
+#### Hungary Chickenpox Dataset TMGN
+
+To run the experiments with the default settings:
+```bash
+cd chickenpox
+python experiments_hungary.py
+```
+
+### Experiments
+
+- `experiments_multiresolution`: Testing source Multiresolution Graph Network model from paper [Multiresolution Equivariant Graph Variational Autoencoder](https://arxiv.org/abs/2106.00967) and the enhanced temporal model Temporal MGN on COVID data of four countries, predicting the number of cases at each location the next day. Underlying graphs are topologially static, with changing node features (past number of cases at each node) and edge features. TMGN code is written in the style of the original code from [Panagopoulos et al., 2020](https://arxiv.org/abs/2009.08388).
+- `experiments_hungary`: Testing Temporal MGN model on Hungary Chickenpox dataset, given that the underlying graph is topologically static (only changing node features: number of cases from a predetermined past time window). Model predicts the number of cases at each node in the graph for the following day, 10 days, 20 days, and 40 days.
