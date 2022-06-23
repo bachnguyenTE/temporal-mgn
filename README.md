@@ -81,3 +81,8 @@ python experiments_hungary.py
 
 - `experiments_multiresolution`: Testing source Multiresolution Graph Network model from paper [Multiresolution Equivariant Graph Variational Autoencoder](https://arxiv.org/abs/2106.00967) and the enhanced temporal model Temporal MGN on COVID data of four countries, predicting the number of cases at each location the next day. Underlying graphs are topologially static, with changing node features (past number of cases at each node) and edge features. TMGN code is written in the style of the original code from [Panagopoulos et al., 2020](https://arxiv.org/abs/2009.08388).
 - `experiments_hungary`: Testing Temporal MGN model on Hungary Chickenpox dataset, given that the underlying graph is topologically static (only changing node features: number of cases from a predetermined past time window). Model predicts the number of cases at each node in the graph for the following day, 10 days, 20 days, and 40 days.
+
+## Contributors
+
+- Viet Bach Nguyen (correspondent), bach.nguyen.te@gmail.com
+- Truong Son Hy, sonpascal93@gmail.com
