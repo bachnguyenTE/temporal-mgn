@@ -7,6 +7,7 @@ import numpy as np
 from torch import optim
 from torch.optim import Adam, Adagrad
 from torch.utils.data import DataLoader
+import torch_geometric
 
 from temporal_model import TemporalMGN
 
@@ -136,7 +137,6 @@ print("MSE: {:.4f}".format(cost))
 
 
 # 1O-window evaluation
-device = torch.device('cpu')
 time_lags = 8
 model.load_state_dict(torch.load("best_t_mgn_test_chickenpox.pth"))
 model.to(device)
@@ -189,7 +189,6 @@ print("MSE (10-window): {:.4f}".format(cost))
 
 
 # 20-window evaluation
-device = torch.device('cpu')
 time_lags = 8
 model.to(device)
 model.eval()
@@ -241,7 +240,6 @@ print("MSE (20-window): {:.4f}".format(cost))
 
 
 # 40-window evaluation
-device = torch.device('cpu')
 time_lags = 8
 model.to(device)
 model.eval()
