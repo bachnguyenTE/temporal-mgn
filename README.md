@@ -46,6 +46,7 @@ To run this code you will need the following `python` and `R` packages:
 - [scipy](https://www.scipy.org/)
 - [PyTorch](https://pytorch.org/)
 - [networkx](https://networkx.github.io/)
+	- In case of conflict with `scipy`, install `networkx` version `2.6.3` instead.
 - [sklearn](https://scikit-learn.org/stable/)
 - dplyr, sf, ggplot2, sp
 - [PyTorch Geometric (pyg/torch-geometric)](https://github.com/rusty1s/pytorch_geometric)
@@ -86,3 +87,32 @@ python experiments_hungary.py
 
 - Viet Bach Nguyen (correspondent), bach.nguyen.te@gmail.com
 - Truong Son Hy, sonpascal93@gmail.com
+
+## Citations
+
+```bibtex
+@article{Panagopoulos_Nikolentzos_Vazirgiannis_2021, 
+  title={Transfer Graph Neural Networks for Pandemic Forecasting}, 
+  volume={35}, 
+  url={https://ojs.aaai.org/index.php/AAAI/article/view/16616}, 
+  number={6}, 
+  journal={Proceedings of the AAAI Conference on Artificial Intelligence}, 
+  author={Panagopoulos, George and Nikolentzos, Giannis and Vazirgiannis, Michalis}, 
+  year={2021}, 
+  month={May}, 
+  pages={4838-4845} }
+```
+
+```bibtex
+@misc{https://doi.org/10.48550/arxiv.2102.08100,
+  doi = {10.48550/ARXIV.2102.08100},
+  url = {https://arxiv.org/abs/2102.08100},
+  author = {Rozemberczki, Benedek and Scherer, Paul and Kiss, Oliver and Sarkar, Rik and Ferenci, Tamas},
+  keywords = {Machine Learning (cs.LG), Artificial Intelligence (cs.AI), FOS: Computer and information sciences, FOS: Computer and information sciences},
+  title = {Chickenpox Cases in Hungary: a Benchmark Dataset for Spatiotemporal Signal Processing with Graph Neural Networks},
+  publisher = {arXiv},
+  year = {2021},
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+
+```
