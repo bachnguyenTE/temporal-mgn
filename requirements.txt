@@ -1,0 +1,11 @@
+numpy
+pandas
+scipy
+torch
+networkx=2.6.3
+dplyr
+sf
+ggplot2
+sp
+torch_geometric
+torch_geometric_temporal
