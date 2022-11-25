@@ -2,7 +2,7 @@ numpy
 pandas
 scipy
 torch
-networkx=2.6.3
+networkx==2.6.3
 dplyr
 sf
 ggplot2
